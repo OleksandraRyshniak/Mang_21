@@ -1,0 +1,92 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>6f63aeb1-d555-43e6-82fa-7fbd92396be3</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>_21.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>21</Name>
+    <RootNamespace>21</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="_21.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="10b.PNG" />
+    <Content Include="10c.PNG" />
+    <Content Include="10p.PNG" />
+    <Content Include="10x.PNG" />
+    <Content Include="2b.PNG" />
+    <Content Include="2c.PNG" />
+    <Content Include="2p.PNG" />
+    <Content Include="2x.PNG" />
+    <Content Include="3b.PNG" />
+    <Content Include="3c.PNG" />
+    <Content Include="3p.PNG" />
+    <Content Include="3x.PNG" />
+    <Content Include="4b.PNG" />
+    <Content Include="4c.PNG" />
+    <Content Include="4p.PNG" />
+    <Content Include="4x.PNG" />
+    <Content Include="5b.PNG" />
+    <Content Include="5c.PNG" />
+    <Content Include="5p.PNG" />
+    <Content Include="5x.PNG" />
+    <Content Include="6b.PNG" />
+    <Content Include="6c.PNG" />
+    <Content Include="6p.PNG" />
+    <Content Include="6x.PNG" />
+    <Content Include="7b.PNG" />
+    <Content Include="7c.PNG" />
+    <Content Include="7p.PNG" />
+    <Content Include="7x.PNG" />
+    <Content Include="8b.PNG" />
+    <Content Include="8c.PNG" />
+    <Content Include="8p.PNG" />
+    <Content Include="8x.PNG" />
+    <Content Include="9b.PNG" />
+    <Content Include="9c.PNG" />
+    <Content Include="9p.PNG" />
+    <Content Include="9x.PNG" />
+    <Content Include="Ab.PNG" />
+    <Content Include="Ac.PNG" />
+    <Content Include="Ap.PNG" />
+    <Content Include="Ax.png" />
+    <Content Include="cards.ico" />
+    <Content Include="cards.txt" />
+    <Content Include="Jb.PNG" />
+    <Content Include="Jc.PNG" />
+    <Content Include="Jp.PNG" />
+    <Content Include="Jx.PNG" />
+    <Content Include="Kb.PNG" />
+    <Content Include="Kc.PNG" />
+    <Content Include="Kp.PNG" />
+    <Content Include="Kx.PNG" />
+    <Content Include="Qb.PNG" />
+    <Content Include="Qc.PNG" />
+    <Content Include="Qp.PNG" />
+    <Content Include="Qx.PNG" />
+    <Content Include="zBack.PNG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
