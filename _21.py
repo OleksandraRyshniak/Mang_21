@@ -3,20 +3,23 @@ import random
 
 aken=Tk()
 aken.title("21 Mäng")
-aken.geometry("700x700")
+aken.geometry("500x500")
 aken.configure(bg="white")
 aken.resizable(width=False, height=False)
 aken.iconbitmap("cards.ico")
 
 def alusta(event):
     nupp.grid_remove()
-    pilt_1.grid(row=15, column=0, pady=20, padx=5, rowspan=4, columnspan=3)
-    pilt_2.grid(row=15, column=1, pady=20, padx=5, rowspan=4, columnspan=3)
-    s.grid(row=15, column=3, pady=5, padx=5, rowspan=4, columnspan=3)
-    lisa_nupp.grid(row=16, column=3, pady=20, padx=5, rowspan=4, columnspan=3)
-    end_nupp.grid(row=17, column=3, pady=20, padx=5, rowspan=4, columnspan=3)
+    pilt_1.grid(row=15, column=0, pady=20, padx=10, rowspan=3, columnspan=3)
+    pilt_2.grid(row=15, column=1, pady=20, padx=10, rowspan=3, columnspan=3)
+    s.grid(row=15, column=3, pady=5, padx=10, rowspan=3, columnspan=3)
+    lisa_nupp.grid(row=16, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
+    end_nupp.grid(row=17, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
 
 def valik1()-> any:
+    with open ("-cards.txt", 'r', encoding="utf-8-sig") as f:
+        c=[]
+
     koik=0
     fail="cards.txt"
     with open(fail, 'r', encoding="utf-8-sig") as f:
@@ -65,7 +68,7 @@ end_nupp=Button(aken, text="LOPETA VOOR", bg="lightblue", font=("Arial", 12), fg
 card1, arv1=valik1()
 card2, arv2=valik2()
 summa=arv1 + arv2
-s=Label(aken, text=(f"Summa: {summa}"),  bg="white", font=("Arial", 17), fg="black",width=10, height=1 )
+s=Label(aken, text=(f"Summa: {summa}"),  bg="white", font=("Arial", 17), fg="black",width=15, height=1 )
 picture1=PhotoImage(file=card1)
 picture2=PhotoImage(file=card2)
 pilt_1=Label(aken,image=picture1)

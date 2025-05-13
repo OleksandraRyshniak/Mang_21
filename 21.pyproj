@@ -24,6 +24,7 @@
     <Compile Include="_21.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="-cards.txt" />
     <Content Include="10b.PNG" />
     <Content Include="10c.PNG" />
     <Content Include="10p.PNG" />
@@ -66,6 +67,7 @@
     <Content Include="Ax.png" />
     <Content Include="cards.ico" />
     <Content Include="cards.txt" />
+    <Content Include="card_0.png" />
     <Content Include="Jb.PNG" />
     <Content Include="Jc.PNG" />
     <Content Include="Jp.PNG" />
