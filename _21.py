@@ -77,6 +77,15 @@ def valik2()-> any:
     k=g["k"]
     return p,k
 
+def veel (event):
+    summa=int(arv1)+int(arv2)+int(arv3)
+    s=Label(aken, text=(f"Summa: {summa}"),  bg="white", font=("Arial", 17), fg="black",width=15, height=1 )
+    pilt_1.grid(row=15, column=0, pady=20, padx=10, rowspan=3, columnspan=3)
+    pilt_2.grid(row=15, column=1, pady=20, padx=10, rowspan=3, columnspan=3)
+    pilt_3.grid(row=15, column=2, pady=20, padx=10, rowspan=3, columnspan=3)
+    s.grid(row=15, column=3, pady=5, padx=10, rowspan=3, columnspan=3)
+    lisa_nupp.grid(row=16, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
+    end_nupp.grid(row=17, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
 
 for i in range(3):
     aken.grid_rowconfigure(i, weight=1)
@@ -92,14 +101,18 @@ stop_nupp=Button(aken, text="STOP", bg="lightblue", font=("Arial", 12), fg="blac
 
 card1, arv1=valik1()
 card2, arv2=valik2()
+card3, arv3=valik3()
 summa=int(arv1) + int(arv2)
 s=Label(aken, text=(f"Summa: {summa}"),  bg="white", font=("Arial", 17), fg="black",width=15, height=1 )
 picture1=PhotoImage(file=card1)
 picture2=PhotoImage(file=card2)
+picture3=PhotoImage(file=card3)
 pilt_1=Label(aken,image=picture1)
 pilt_2=Label(aken,image=picture2)
+pilt_3=Label(aken,image=picture3)
 pilt_1.image = picture1
 pilt_2.image = picture2
+pilt_3.image = picture3
 
 photo=PhotoImage()
 # distroe
