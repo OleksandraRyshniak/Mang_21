@@ -70,6 +70,7 @@
     <Content Include="card_0.png" />
     <Content Include="Jb.PNG" />
     <Content Include="Jc.PNG" />
+    <Content Include="joker.ico" />
     <Content Include="Jp.PNG" />
     <Content Include="Jx.PNG" />
     <Content Include="Kb.PNG" />
