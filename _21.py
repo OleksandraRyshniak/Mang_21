@@ -91,6 +91,7 @@ for i in range(3):
     aken.grid_rowconfigure(i, weight=1)
     aken.grid_columnconfigure(i, weight=1)
 
+       
 
 nupp=Button(aken, text="Alusta mängu", bg="lightpink", font=("Arial", 20), fg="black", relief=RAISED, width=30)
 nupp.grid(row=1, column=1,pady=20)
