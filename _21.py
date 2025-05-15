@@ -3,22 +3,38 @@ import random
 
 aken=Tk()
 aken.title("21 Mäng")
-aken.geometry("700x700")
+aken.geometry("700x850")
 aken.configure(bg="white")
 aken.resizable(width=False, height=False)
 aken.iconbitmap("joker.ico")
 
-def alusta(event):
-    nupp.grid_remove()
-    pilt_1.grid(row=15, column=0, pady=20, padx=10, rowspan=3, columnspan=3)
-    pilt_2.grid(row=15, column=1, pady=20, padx=10, rowspan=3, columnspan=3)
-    s.grid(row=15, column=3, pady=5, padx=10, rowspan=3, columnspan=3)
-    lisa_nupp.grid(row=16, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
-    end_nupp.grid(row=17, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
-    stop_nupp.grid(row=18, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
+
+def login0(event):
+    login_=login.get()
+    if not login_:
+        login.config( bg="red", font=("Arial",20), fg="black", width=25)
+        return
+    alusta()
+
+def alusta():
+    nupp.place_forget()
+    sisesta.place_forget()
+    login.place_forget()
+    pilt_1.grid(row=23, column=0, pady=5, padx=5,rowspan=5) 
+    pilt_2.grid(row=23, column=1, pady=5, padx=5,rowspan=5)
+    s.grid(row=21, column=3, pady=1, padx=10)      
+    lisa_nupp.grid(row=22, column=3, pady=1, padx=10)  
+    end_nupp.grid(row=23, column=3, pady=1, padx=10)
+    start_nupp.grid(row=24, column=3, pady=1, padx=10)
+    stop_nupp.grid(row=25, column=3, pady=1, padx=10)
+    kogus_label.grid(row=5, column=3)
+    kogus_robot_label.grid(row=6, column=3)
+    tulemus_label.grid(row=7, column=3)
+
+
 
 def valik()-> any:
-    fail1="-cards.txt"
+    fail1="cards7.txt"
     with open (fail1, 'r', encoding="utf-8-sig") as f:
         c=[]
         for rida in f:
@@ -32,13 +48,10 @@ def valik()-> any:
     g=random.choice(cards)
     card=["ch", "x", "b", "p"]
     b=random.choice(card)
-    uus_card={'card': g[b]}
+    uus_card={b: g[b]}
     while 1:
-        if b in c:
-            g=random.choice(cards)
-            card=["ch", "x", "b", "p"]
-            b=random.choice(card)
-            uus_card={'card': g[b]}
+        if uus_card in c:
+            continue
         else:
             with open(fail1, 'a', encoding="utf-8-sig") as f:
                 f.write(str(uus_card)+'\n')
@@ -47,70 +60,186 @@ def valik()-> any:
     h=g["k"]
     return c, h
 
+kaartide_arv = 0  # сколько карт уже показано
+pildid = []  
+
+def veel ():
+    global summa, kaartide_arv, pildid  
+    if kaartide_arv >= 3:
+        return  
+    card, arv = valik()
+    picture = PhotoImage(file=card)
+    pilt = Label(aken, image=picture)
+    pilt.image = picture
+    pilt.grid(row=18, column=kaartide_arv, pady=5, padx=5, rowspan=5)
+
+    pildid.append(pilt)  # сохранить ссылку на картинку
+    summa += int(arv)
+    s.config(text=(f"Summa: {summa}"))
+
+    kaartide_arv += 1
+
+mangija_võidud = 0
+robot_võidud = 0
+
+def end(event):
+    global summa_robot, summa, mangija_võidud, robot_võidud
+    login_ = login.get()
+
+    pilt_robot_1.grid(row=0, column=0, pady=5, padx=5)
+    pilt_robot_2.grid(row=0, column=1, pady=5, padx=5)
+    su.grid(row=0, column=3, pady=5, padx=10)
+
+    if summa_robot < 17:
+        card_robot_3, arv_3 = valik()
+        picture_robot_3 = PhotoImage(file=card_robot_3)
+        pilt_robot_3 = Label(aken, image=picture_robot_3)
+        pilt_robot_3.image = picture_robot_3
+        pilt_robot_3.grid(row=0, column=2, pady=5, padx=5)
+        summa_robot += int(arv_3)
+        su.config(text=f"Summa: {summa_robot}")
+
+        if summa_robot < 21:
+            card_robot_4, arv_4 = valik()
+            picture_robot_4 = PhotoImage(file=card_robot_4)
+            pilt_robot_4 = Label(aken, image=picture_robot_4)
+            pilt_robot_4.image = picture_robot_4
+            pilt_robot_4.grid(row=1, column=0, pady=5, padx=5)
+            summa_robot += int(arv_4)
+            su.config(text=f"Summa: {summa_robot}")
+
+        if summa_robot < 21:
+            card_robot_5, arv_5 = valik()
+            picture_robot_5 = PhotoImage(file=card_robot_5)
+            pilt_robot_5 = Label(aken, image=picture_robot_5)
+            pilt_robot_5.image = picture_robot_5
+            pilt_robot_5.grid(row=1, column=1, pady=5, padx=5)
+            summa_robot += int(arv_5)
+            su.config(text=f"Summa: {summa_robot}")
+    lisa_nupp.grid_remove()
+    if summa > 21 and summa_robot > 21:
+        tulemus_text = "Mõlemad kaotasid"
+    elif summa > 21:
+        robot_võidud += 1
+        tulemus_text = "Robot võitis"
+    elif summa_robot > 21:
+        mangija_võidud += 1
+        tulemus_text = f"{login_} võitis"
+    elif summa > summa_robot:
+        mangija_võidud += 1
+        tulemus_text = f"{login_} võitis"
+    elif summa < summa_robot:
+        robot_võidud += 1
+        tulemus_text = "Robot võitis"
+    else:
+        tulemus_text = "Viik"
+
+    kogus_label.config(text=f"Tulemus {login_}: {mangija_võidud}")
+    kogus_robot_label.config(text=f"Tulemus robot: {robot_võidud}")
+    tulemus_label.config(text=tulemus_text)
 
 
-def veel (event):
-    summa=int(arv1)+int(arv2)+int(arv3)
-    s=Label(aken, text=(f"Summa: {summa}"),  bg="white", font=("Arial", 17), fg="black",width=15, height=1 )
-    pilt_1.grid(row=15, column=0, pady=20, padx=10, rowspan=3, columnspan=1)
-    pilt_2.grid(row=15, column=1, pady=20, padx=10, rowspan=3, columnspan=1)
-    pilt_3.grid(row=15, column=2, pady=20, padx=10, rowspan=3, columnspan=1)
-    s.grid(row=15, column=3, pady=5, padx=10, rowspan=3, columnspan=3)
-    lisa_nupp.grid(row=16, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
-    end_nupp.grid(row=17, column=3, pady=20, padx=10, rowspan=3, columnspan=3)
 
-def end (event):
-    pilt_robot_1.grid(row=0, column=0, pady=20, padx=10, rowspan=3, columnspan=1)
-    pilt_robot_2.grid(row=0, column=1, pady=20, padx=10, rowspan=3, columnspan=1)
-    su.grid(row=0, column=3, pady=5, padx=10, rowspan=3, columnspan=3)
-    if summa < 21:
-        card_robot_3, arv_3=valik()
-        picture_robot_3=PhotoImage(file=card_robot_3)
-        pilt_robot_3=Label(aken,image=picture_robot_3 )
-        pilt_robot_3.grid(row=0, column=2, pady=20, padx=10, rowspan=3, columnspan=1)
-        pilt_robot_3.image= picture_robot_3
-        summa_t=summa_robot+int(arv_3)
-        su.config(text=(f"Summa: {summa_t}"))
-        if summa_t<21:
-            card_robot_4, arv_4=valik()
-            picture_robot_4=PhotoImage(file=card_robot_3)
-            pilt_robot_4=Label(aken,image=picture_robot_4 )
-            pilt_robot_4.grid(row=1, column=1, pady=20, padx=10, rowspan=3, columnspan=1)
-            pilt_robot_4.image= picture_robot_4
-            summa_q=summa_t+int(4)
-            su.config(text=(f"Summa: {summa_q}"))
-        if summa_t<21:
-            card_robot_5, arv_5=valik()
-            picture_robot_5=PhotoImage(file=card_robot_5)
-            pilt_robot_5=Label(aken,image=picture_robot_5 )
-            pilt_robot_5.grid(row=1, column=3, pady=20, padx=10, rowspan=3, columnspan=1)
-            pilt_robot_5.image= picture_robot_5
-            summa_s=summa_t+int(4)
-            su.config(text=(f"Summa: {summa_s}"))
+def alustar(event):
+    global picture1, picture2, picture_robot_1, picture_robot_2
+    global pilt_1, pilt_2, pilt_robot_1, pilt_robot_2
+    global summa, kaartide_arv, pildid, summa_robot
+    with open("cards7.txt", 'w', encoding="utf-8-sig") as f:
+        pass
 
+    for pilt in pildid:
+        pilt.destroy()
+    pildid.clear()
+    kaartide_arv = 0
 
+    pilt_robot_1.grid_remove()
+    pilt_robot_2.grid_remove()
 
+    card1, arv1 = valik()
+    card2, arv2 = valik()
+    summa = int(arv1) + int(arv2)
 
+    picture1 = PhotoImage(file=card1)
+    picture2 = PhotoImage(file=card2)
 
-for i in range(3):
+    pilt_1.config(image=picture1)
+    pilt_1.image = picture1
+    pilt_2.config(image=picture2)
+    pilt_2.image = picture2
+
+    pilt_1.grid(row=23, column=0, pady=5, padx=5, rowspan=5)
+    pilt_2.grid(row=23, column=1, pady=5, padx=5, rowspan=5)
+
+    s.config(text=f"Summa: {summa}")
+    su.config(text=f"Summa: ?")
+
+    card_robot_1, arv_1 = valik()
+    card_robot_2, arv_2 = valik()
+    summa_robot = int(arv_1) + int(arv_2)
+
+    picture_robot_1 = PhotoImage(file=card_robot_1)
+    picture_robot_2 = PhotoImage(file=card_robot_2)
+
+    pilt_robot_1.config(image=picture_robot_1)
+    pilt_robot_1.image = picture_robot_1
+    pilt_robot_2.config(image=picture_robot_2)
+    pilt_robot_2.image = picture_robot_2
+
+    tulemus_label.config(text="")
+    lisa_nupp.grid(row=22, column=3, pady=1, padx=10)
+
+def exit(event):
+    fail="tulemus.txt"
+    login_=login.get()
+    mangija_score = mangija_võidud
+    robot_score = robot_võidud
+    uus={login_: mangija_score, 'robot': robot_score}
+    aken.destroy()
+    with open (fail, 'a', encoding="utf-8-sig") as f:
+        f.write(str(uus)+'\n')
+    aken1=Tk()
+    aken1.title("21 Mäng")
+    aken1.geometry("500x500")
+    aken1.configure(bg="white")
+    aken1.resizable(width=False, height=False)
+    aken1.iconbitmap("joker.ico")
+
+    skoor_mängija = Label(aken1, text=f"{login_}: {mangija_score}", font=("Arial", 16), bg="white")
+    skoor_mängija.pack(pady=10)
+
+    skoor_robot = Label(aken1, text=f"Robot: {robot_score}", font=("Arial", 16), bg="white")
+    skoor_robot.pack(pady=10)
+
+    sulge_nupp = Button(aken1, text="SULGE", font=("Arial", 14), command=aken1.destroy)
+    sulge_nupp.pack(pady=20)
+    with open("cards7.txt", 'w', encoding="utf-8-sig") as f:
+        pass  
+
+for i in range(5):
     aken.grid_rowconfigure(i, weight=1)
     aken.grid_columnconfigure(i, weight=1)
 
-       
-login=
-
+kogus_label = Label(aken, text="Tulemus: 0", bg='white', font=("Arial", 15))
+kogus_robot_label = Label(aken, text="Tulemus robot: 0", bg='white', font=("Arial", 15))
+tulemus_label = Label(aken, text="", bg='white', font=("Arial", 15))
+login=Entry(aken, bg='lightblue', font=("Arial", 20), fg="black", width=25)
+login.place(relx=0.4, rely=0.60, anchor="center")
+sisesta=Label(aken, text="Sisesta oma login: ", bg='white', font=("Arial", 20), fg="black")
+sisesta.place(relx=0.3, rely=0.50, anchor="center")
 nupp=Button(aken, text="Alusta mängu", bg="lightpink", font=("Arial", 20), fg="black", relief=RAISED, width=30)
-nupp.grid(row=1, column=1,pady=20)
-nupp.bind("<Button-1>", alusta)
-lisa_nupp=Button(aken, text="VEEL", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=30)
-lisa_nupp.bind("<Button-1>", veel)
-end_nupp=Button(aken, text="LOPETA VOOR", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=30)
+nupp.place(relx=0.5, rely=0.40, anchor="center")
+nupp.bind("<Button-1>", login0)
+lisa_nupp=Button(aken, text="VEEL", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=15, command=veel)
+lisa_nupp.bind("<Button-1>")
+end_nupp=Button(aken, text="LOPETA VOOR", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=15)
 end_nupp.bind("<Button-1>", end)
-stop_nupp=Button(aken, text="STOP", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=30 )
+stop_nupp=Button(aken, text="STOP", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=15 )
+stop_nupp.bind("<Button-1>", exit)
+start_nupp=Button(aken,text="ALUSTA VOOR", bg="lightblue", font=("Arial", 12), fg="black", relief=RAISED, width=15)
+start_nupp.bind("<Button>", alustar)
 
 card1, arv1=valik()
 card2, arv2=valik()
-card3, arv3=valik()
 card_robot_1, arv_1=valik()
 card_robot_2, arv_2=valik()
 summa=int(arv1) + int(arv2) 
@@ -119,17 +248,19 @@ su=Label(aken, text=(f"Summa: {summa_robot}"),  bg="white", font=("Arial", 17), 
 s=Label(aken, text=(f"Summa: {summa}"),  bg="white", font=("Arial", 17), fg="black",width=15, height=1 )
 picture1=PhotoImage(file=card1)
 picture2=PhotoImage(file=card2)
-picture3=PhotoImage(file=card3)
-picture_robot_1=PhotoImage(file=card_robot_1)
-picture_robot_2=PhotoImage(file=card_robot_2)
 pilt_1=Label(aken,image=picture1)
 pilt_2=Label(aken,image=picture2)
-pilt_3=Label(aken,image=picture3)
-pilt_robot_1=Label(aken,image=picture_robot_1 )
-pilt_robot_2=Label(aken,image=picture_robot_2 )
+picture_robot_1=PhotoImage(file=card_robot_1)
+picture_robot_2=PhotoImage(file=card_robot_2)
+
+
+
+pilt_robot_1=Label(aken )
+pilt_robot_2=Label(aken )
 pilt_1.image = picture1
 pilt_2.image = picture2
-pilt_3.image = picture3
+
+
 pilt_robot_1.image= picture_robot_1
 pilt_robot_2.image= picture_robot_2
 

@@ -1,13 +1,13 @@
-{"ch": '2c.PNG' , "b": '2b.PNG', "p": '2p.PNG', "x": '2x.PNG', "k": "2"}
-{"ch": '3c.PNG' , "b": '3b.PNG', "p": '3p.PNG', "x": '3x.PNG', "k": "3"}
-{"ch": '4c.PNG' , "b": '4b.PNG', "p": '4p.PNG', "x": '4x.PNG', "k": "4"}
-{"ch": '5c.PNG' , "b": '5b.PNG', "p": '5p.PNG', "x": '5x.PNG', "k": "5"}
-{"ch": '6c.PNG' , "b": '6b.PNG', "p": '6p.PNG', "x": '6x.PNG', "k": "6"}
-{"ch": '7c.PNG' , "b": '7b.PNG', "p": '7p.PNG', "x": '7x.PNG', "k": "7"}
-{"ch": '8c.PNG' , "b": '8b.PNG', "p": '8p.PNG', "x": '8x.PNG', "k": "8"}
-{"ch": '9c.PNG' , "b": '9b.PNG', "p": '9p.PNG', "x": '9x.PNG', "k": "9"}
-{"ch": '10c.PNG' , "b": '10b.PNG', "p": '10p.PNG', "x": '10x.PNG', "k": "10"}
-{"ch": 'Ac.PNG' , "b": 'Ab.PNG', "p": 'Ap.PNG', "x": 'Ax.PNG', "k": "11"}
-{"ch": 'Jc.PNG' , "b": 'Jb.PNG', "p": 'Jp.PNG', "x": 'Jx.PNG', "k": "2"}
-{"ch": 'Qc.PNG' , "b": 'Qb.PNG', "p": 'Qp.PNG', "x": 'Qx.PNG', "k": "3"}
-{"ch": 'Kc.PNG' , "b": 'Kb.PNG', "p": 'Kp.PNG', "x": 'Kx.PNG', "k": "4"}
+{"ch": "2c.PNG", "b": "2b.PNG", "p": "2p.PNG", "x": "2x.PNG", "k": "2"}
+{"ch": "3c.PNG", "b": "3b.PNG", "p": "3p.PNG", "x": "3x.PNG", "k": "3"}
+{"ch": "4c.PNG", "b": "4b.PNG", "p": "4p.PNG", "x": "4x.PNG", "k": "4"}
+{"ch": "5c.PNG", "b": "5b.PNG", "p": "5p.PNG", "x": "5x.PNG", "k": "5"}
+{"ch": "6c.PNG", "b": "6b.PNG", "p": "6p.PNG", "x": "6x.PNG", "k": "6"}
+{"ch": "7c.PNG", "b": "7b.PNG", "p": "7p.PNG", "x": "7x.PNG", "k": "7"}
+{"ch": "8c.PNG", "b": "8b.PNG", "p": "8p.PNG", "x": "8x.PNG", "k": "8"}
+{"ch": "9c.PNG", "b": "9b.PNG", "p": "9p.PNG", "x": "9x.PNG", "k": "9"}
+{"ch": "10c.PNG", "b": "10b.PNG", "p": "10p.PNG", "x": "10x.PNG", "k": "10"}
+{"ch": "Ac.PNG", "b": "Ab.PNG", "p": "Ap.PNG", "x": "Ax.PNG", "k": "11"}
+{"ch": "Jc.PNG", "b": "Jb.PNG", "p": "Jp.PNG", "x": "Jx.PNG", "k": "2"}
+{"ch": "Qc.PNG", "b": "Qb.PNG", "p": "Qp.PNG", "x": "Qx.PNG", "k": "3"}
+{"ch": "Kc.PNG", "b": "Kb.PNG", "p": "Kp.PNG", "x": "Kx.PNG", "k": "4"}

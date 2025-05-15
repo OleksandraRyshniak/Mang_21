@@ -24,7 +24,7 @@
     <Compile Include="_21.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="-cards.txt" />
+    <Content Include="cards7.txt" />
     <Content Include="10b.PNG" />
     <Content Include="10c.PNG" />
     <Content Include="10p.PNG" />
@@ -81,6 +81,7 @@
     <Content Include="Qc.PNG" />
     <Content Include="Qp.PNG" />
     <Content Include="Qx.PNG" />
+    <Content Include="Tulemus.txt" />
     <Content Include="zBack.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
