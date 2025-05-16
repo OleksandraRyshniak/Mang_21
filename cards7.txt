@@ -1,16 +1,1 @@
-﻿{'p': '10p.PNG'}
-{'x': 'Jx.PNG'}
-{'ch': '3c.PNG'}
-{'b': '6b.PNG'}
-{'ch': '4c.PNG'}
-{'x': '3x.PNG'}
-{'ch': '8c.PNG'}
-{'p': '8p.PNG'}
-{'b': '8b.PNG'}
-{'b': 'Jb.PNG'}
-{'b': '9b.PNG'}
-{'p': 'Kp.PNG'}
-{'p': '7p.PNG'}
-{'ch': '10c.PNG'}
-{'ch': '5c.PNG'}
-{'ch': '6c.PNG'}
+﻿
