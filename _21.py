@@ -40,8 +40,6 @@ def alusta():
     kogus_robot_label.grid(row=6, column=3)
     tulemus_label.grid(row=7, column=3)
 
-
-
 def valik()-> any:
     fail1="cards7.txt"
     with open (fail1, 'r', encoding="utf-8-sig") as f:
@@ -72,7 +70,6 @@ def valik()-> any:
     h=g["k"]
     return c, h
 
-
 def veel (event):
     global summa, kaartide_arv, pilt  
     if kaartide_arv >= 5:
@@ -86,7 +83,6 @@ def veel (event):
     summa += int(arv)
     s.config(text=(f"Summa: {summa}"))
     kaartide_arv += 1
-
 
 def end(event):
     global summa_robot, summa, mangija_voidud, robot_voidud, pilt_robot
@@ -105,7 +101,6 @@ def end(event):
         summa_robot += int(arv_3)
         su.config(text=(f"Summa: {summa_robot}"))
         pilt_robot.append(pilt_robot_3)
-
     if summa_robot < 21:
         card_robot_4, arv_4 = valik()
         picture_robot_4 = PhotoImage(file=card_robot_4)
@@ -115,7 +110,6 @@ def end(event):
         summa_robot += int(arv_4)
         su.config(text=f"Summa: {summa_robot}")
         pilt_robot.append(pilt_robot_4)
-
     if summa_robot < 21:
         card_robot_5, arv_5 = valik()
         picture_robot_5 = PhotoImage(file=card_robot_5)
@@ -125,7 +119,6 @@ def end(event):
         summa_robot += int(arv_5)
         su.config(text=f"Summa: {summa_robot}")
         pilt_robot.append(pilt_robot_5)
-
     if summa > 21 and summa_robot > 21:
         tulemus = "Viik" 
     elif summa > 21:
@@ -142,7 +135,6 @@ def end(event):
         robot_voidud += 1
     else:
         tulemus = "Viik" 
-
     tulemus_label.config(text=tulemus)
     tulemus_label.grid(row=7, column=3)
     kogus_label.config(text=(f"Tulemus {login_}: {mangija_voidud}"))
@@ -150,25 +142,19 @@ def end(event):
     kogus_robot_label.config(text=(f"Tulemus robot: {robot_voidud}"))
     kogus_robot_label.grid(row=6, column=3)
 
-
 def alustar(event):
     global picture1, picture2, picture_robot_1, picture_robot_2
     global pilt_1, pilt_2, pilt_robot_1, pilt_robot_2
     global summa, summa_robot, pilt, pilt_robot, kaartide_arv
     with open("cards7.txt", 'w', encoding="utf-8-sig") as f:
         pass
-
     kaartide_arv = 0
-
     for kaart in pilt:
         kaart.grid_forget()
     for kaart in pilt_robot:
         kaart.grid_forget()
-
     pilt.clear()
     pilt_robot.clear()
-
-
     card1, arv1 = valik()
     card2, arv2 = valik()
     summa = int(arv1) + int(arv2)
@@ -214,13 +200,10 @@ def exit(event):
     aken1.configure(bg="white")
     aken1.resizable(width=False, height=False)
     aken1.iconbitmap("joker.ico")
-
     skoor_mängija = Label(aken1, text=f"{login_}: {mangija_score}", font=("Arial", 16), bg="white")
     skoor_mängija.pack(pady=10)
-
     skoor_robot = Label(aken1, text=f"Robot: {robot_score}", font=("Arial", 16), bg="white")
     skoor_robot.pack(pady=10)
-
     sulge_nupp = Button(aken1, text="SULGE", font=("Arial", 14), command=aken1.destroy)
     sulge_nupp.pack(pady=20)
     ajalugu_nupp=Button(aken1, text="AJALUGU", font=("Arial", 14))
@@ -229,19 +212,34 @@ def exit(event):
     with open("cards7.txt", 'w', encoding="utf-8-sig") as f:
         pass  
 
-def ajalugu(event):
-    aken2=Tk()
-    aken2.title("Ajalugu_ 21 Mäng")
+def ajalugu():
+    aken2 = Tk()
+    aken2.title("Ajalugu – 21 Mäng")
     aken2.geometry("500x500")
     aken2.configure(bg="white")
     aken2.resizable(width=False, height=False)
     aken2.iconbitmap("joker.ico")
-    with open ("tulemus.txt", 'r', encoding="utf-8-sig") as f:
-        tulemus=[]
-        for rida in f:
-            tulemus.append(eval(rida.strip()))
-    ajalugu=Label(aken2, text=tulemus, bg='white', font=("Arial", 15))
-    ajalugu.grid(pady=30)
+    try:
+        with open("tulemus.txt", 'r', encoding="utf-8-sig") as f:
+            tulemused = []
+            for rida in f:
+                rida = rida.strip()
+                if rida:
+                    tulemus = eval(rida) 
+                    tulemused.append(tulemus)
+    except:
+        tulemused = []
+    if not tulemused:
+        tekst = Label(aken2, text="Tulemusi pole veel.", bg="white", font=("Arial", 14))
+        tekst.pack(pady=20)
+    else:
+        for i, tulemus in enumerate(tulemused, start=1):
+            tekst = f"{i}. "
+            for votsi, vaartus in tulemus.items():
+                tekst += f"{votsi}: {vaartus}  "
+            lbl = Label(aken2, text=tekst, bg="white", font=("Arial", 12), anchor="w", justify=LEFT)
+            lbl.pack(anchor="w", padx=20)
+
 
 
 for i in range(5):
@@ -285,11 +283,8 @@ pilt_robot_1=Label(aken, image=picture_robot_1 )
 pilt_robot_2=Label(aken, image=picture_robot_2 )
 pilt_1.image = picture1
 pilt_2.image = picture2
-
-
 pilt_robot_1.image= picture_robot_1
 pilt_robot_2.image= picture_robot_2
-
 pilt.append(pilt_1 )
 pilt.append(pilt_2 )
 pilt_robot.append(pilt_robot_1)
