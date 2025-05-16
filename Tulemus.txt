@@ -1,1 +1,4 @@
-﻿
+﻿{'d': 2, 'robot': 0}
+{'gr': 2, 'robot': 0}
+{'fd': 1, 'robot': 1}
+{'hdy': 2, 'robot': 1}

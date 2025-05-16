@@ -91,6 +91,7 @@ def veel (event):
 def end(event):
     global summa_robot, summa, mangija_voidud, robot_voidud, pilt_robot
     lisa_nupp.grid_remove()
+    end_nupp.grid_remove()
     login_ = login.get()
     pilt_robot_1.grid(row=0, column=0, pady=5, padx=5)
     pilt_robot_2.grid(row=0, column=1, pady=5, padx=5)
@@ -196,6 +197,7 @@ def alustar(event):
     pilt_robot.append(pilt_robot_2)
     tulemus_label.config(text="")
     lisa_nupp.grid(row=22, column=3, pady=1, padx=10)
+    end_nupp.grid(row=23, column=3, pady=1, padx=10)
 
 def exit(event):
     fail="tulemus.txt"
@@ -221,8 +223,26 @@ def exit(event):
 
     sulge_nupp = Button(aken1, text="SULGE", font=("Arial", 14), command=aken1.destroy)
     sulge_nupp.pack(pady=20)
+    ajalugu_nupp=Button(aken1, text="AJALUGU", font=("Arial", 14))
+    ajalugu_nupp.bind("<Button-1>", ajalugu)
+    ajalugu_nupp.pack(pady=20)
     with open("cards7.txt", 'w', encoding="utf-8-sig") as f:
         pass  
+
+def ajalugu(event):
+    aken2=Tk()
+    aken2.title("Ajalugu_ 21 Mäng")
+    aken2.geometry("500x500")
+    aken2.configure(bg="white")
+    aken2.resizable(width=False, height=False)
+    aken2.iconbitmap("joker.ico")
+    with open ("tulemus.txt", 'r', encoding="utf-8-sig") as f:
+        tulemus=[]
+        for rida in f:
+            tulemus.append(eval(rida.strip()))
+    ajalugu=Label(aken2, text=tulemus, bg='white', font=("Arial", 15))
+    ajalugu.grid(pady=30)
+
 
 for i in range(5):
     aken.grid_rowconfigure(i, weight=1)
