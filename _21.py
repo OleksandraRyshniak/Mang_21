@@ -212,7 +212,7 @@ def exit(event):
     with open("cards7.txt", 'w', encoding="utf-8-sig") as f:
         pass  
 
-def ajalugu():
+def ajalugu(event):
     aken2 = Tk()
     aken2.title("Ajalugu – 21 Mäng")
     aken2.geometry("500x500")
@@ -239,8 +239,6 @@ def ajalugu():
                 tekst += f"{votsi}: {vaartus}  "
             lbl = Label(aken2, text=tekst, bg="white", font=("Arial", 12), anchor="w", justify=LEFT)
             lbl.pack(anchor="w", padx=20)
-
-
 
 for i in range(5):
     aken.grid_rowconfigure(i, weight=1)
